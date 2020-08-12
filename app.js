@@ -7,11 +7,17 @@ const filteredGeojson = {
     "features": []
 };
 
+var bounds = [
+    [118.894, 11.986], // Southwest coordinates
+    [124.288, 18.771] // Northeast coordinates
+];
+
 const map = new mapboxgl.Map({
     container: "map",
     style: config.style,
     center: config.center,
     zoom: config.zoom,
+    maxBounds: bounds
 });
 
 function flyToLocation(currentFeature, zoom) {
@@ -57,10 +63,36 @@ function buildLocationList(locationData) {
         details.className = "content";
 
         for (let i = 1; i < columnHeaders.length; i++) {
+
             const div = document.createElement("div");
             div.innerText += prop[columnHeaders[i]];
             div.className;
             details.appendChild(div);
+
+
+        }
+
+
+        const links = listing.appendChild(document.createElement("div"));
+
+        links.classList.add("flex-parent", "flex-parent--row");
+
+
+        if (prop.WEBSITE.length > 0) {
+            const website = links.appendChild(document.createElement("div"));
+            website.classList.add("mr12")
+            website.innerHTML = '<a href="' + prop.WEBSITE + '">' + "<img src=" + "'/icons/website2.png'" + "width=" + "'20px'" + ">" + '</a>'
+        }
+
+        if (prop.EMAIL.length > 0) {
+            const email = links.appendChild(document.createElement("div"));
+            email.classList.add("mr12")
+            email.innerHTML = '<a href="' + prop.EMAIL + '">' + "<img src=" + "'/icons/mail.png'" + "width=" + "'20px'" + ">" + '</a>'
+        }
+
+        if (prop.FB.length > 0) {
+            const facebook = links.appendChild(document.createElement("div"));
+            facebook.innerHTML = '<a href="' + prop.FB + '">' + "<img src=" + "'/icons/facebook.png'" + "width=" + "'20px'" + ">" + '</a>'
         }
 
         link.addEventListener("click", function () {
@@ -400,6 +432,7 @@ geocoder.on("result", function (ev) {
 map.on("load", function () {
     map.addControl(geocoder, "top-right");
 
+
     // csv2geojson - following the Sheet Mapper tutorial https://www.mapbox.com/impact-tools/sheet-mapper
     console.log("loaded");
     $(document).ready(function () {
@@ -468,6 +501,17 @@ map.on("load", function () {
         });
         buildLocationList(geojsonData);
     };
+
+
+    // Add geolocate control to the map.
+    map.addControl(
+        new mapboxgl.GeolocateControl({
+            positionOptions: {
+                enableHighAccuracy: true
+            },
+            trackUserLocation: true
+        })
+    );
 });
 
 // Modal - popup for filtering results
