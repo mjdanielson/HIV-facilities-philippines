@@ -87,12 +87,12 @@ function buildLocationList(locationData) {
         if (prop.EMAIL.length > 0) {
             const email = links.appendChild(document.createElement("div"));
             email.classList.add("mr12")
-            email.innerHTML = '<a href="' + prop.EMAIL + '">' + "<img src=" + "'/icons/mail.png'" + "width=" + "'20px'" + ">" + '</a>'
+            email.innerHTML = '<a href="' + prop.EMAIL + '">' + "<img src=" + "'./icons/mail.png'" + "width=" + "'20px'" + ">" + '</a>'
         }
 
         if (prop.FB.length > 0) {
             const facebook = links.appendChild(document.createElement("div"));
-            facebook.innerHTML = '<a href="' + prop.FB + '">' + "<img src=" + "'/icons/facebook.png'" + "width=" + "'20px'" + ">" + '</a>'
+            facebook.innerHTML = '<a href="' + prop.FB + '">' + "<img src=" + "'icons/facebook.png'" + "width=" + "'20px'" + ">" + '</a>'
         }
 
         link.addEventListener("click", function () {
