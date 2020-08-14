@@ -81,7 +81,7 @@ function buildLocationList(locationData) {
         if (prop.WEBSITE.length > 0) {
             const website = links.appendChild(document.createElement("div"));
             website.classList.add("mr12")
-            website.innerHTML = '<a href="' + prop.WEBSITE + '">' + "<img src=" + "'/icons/website2.png'" + "width=" + "'20px'" + ">" + '</a>'
+            website.innerHTML = '<a href="' + prop.WEBSITE + '">' + "<img src=" + "'./icons/website2.png'" + "width=" + "'20px'" + ">" + '</a>'
         }
 
         if (prop.EMAIL.length > 0) {
@@ -92,7 +92,7 @@ function buildLocationList(locationData) {
 
         if (prop.FB.length > 0) {
             const facebook = links.appendChild(document.createElement("div"));
-            facebook.innerHTML = '<a href="' + prop.FB + '">' + "<img src=" + "'icons/facebook.png'" + "width=" + "'20px'" + ">" + '</a>'
+            facebook.innerHTML = '<a href="' + prop.FB + '">' + "<img src=" + "'./icons/facebook.png'" + "width=" + "'20px'" + ">" + '</a>'
         }
 
         link.addEventListener("click", function () {
