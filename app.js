@@ -7,17 +7,13 @@ const filteredGeojson = {
     "features": []
 };
 
-var bounds = [
-    [118.894, 11.986], // Southwest coordinates
-    [124.288, 18.771] // Northeast coordinates
-];
 
 const map = new mapboxgl.Map({
     container: "map",
     style: config.style,
     center: config.center,
     zoom: config.zoom,
-    maxBounds: bounds
+
 });
 
 function flyToLocation(currentFeature, zoom) {
